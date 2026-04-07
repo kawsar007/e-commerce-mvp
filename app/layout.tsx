@@ -1,8 +1,9 @@
-import type { Metadata } from 'next';
-import './globals.css';
+import { Footer } from '@/components/layout/Footer';
 import { Navbar } from '@/components/layout/Navbar';
 import { SecondaryNav } from '@/components/layout/SecondaryNav';
-import { Footer } from '@/components/layout/Footer';
+import { WhatsAppWidget } from '@/components/ui/WhatsAppWidget';
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: {
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SecondaryNav />
         <main className="min-h-screen">{children}</main>
         <Footer />
+        <WhatsAppWidget />
       </body>
     </html>
   );
