@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 import { ProductCard } from '@/components/product/ProductCard';
 import type { Product } from '@/types';
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 interface ProductsSectionProps {
   title: string;

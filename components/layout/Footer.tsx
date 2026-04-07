@@ -1,5 +1,6 @@
+import { Facebook, Instagram, Mail, MapPin, Package, Phone, Twitter } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { Package, Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -81,15 +82,22 @@ export function Footer() {
 
             {/* Payment mock icons */}
             <div className="mt-6">
-              <p className="text-xs tracking-widest uppercase text-stone-600 mb-3">We Accept</p>
+              <p className="text-xs tracking-widest uppercase text-white mb-3">We Accept</p>
               <div className="flex items-center gap-2 flex-wrap">
-                {['bKash', 'Nagad', 'VISA', 'MasterCard'].map((p) => (
-                  <span
-                    key={p}
-                    className="px-2.5 py-1 bg-stone-800 text-stone-300 text-xs font-medium border border-stone-700"
-                  >
-                    {p}
-                  </span>
+                {[
+                  { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsFhRcR9ClYHOrFtimuZIXTZvgU31TQ_nrBg&s', alt: 'bKash' },
+                  { src: 'https://nagad.com.bd//_nuxt/img/og-image.6e48f4e.jpeg', alt: 'Nagad' },
+                  { src: 'https://static.vecteezy.com/system/resources/thumbnails/068/706/013/small_2x/rocket-color-logo-mobile-banking-icon-free-png.png', alt: 'VISA' },
+                  { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsNgW6FaeEe3QP2NMKcry5tSEINxi2Slv8og&s', alt: 'MasterCard' },
+                ].map((payment) => (
+                  <Image
+                    key={payment.alt}
+                    src={payment.src}
+                    alt={payment.alt}
+                    width={48}
+                    height={28}
+                    className="rounded-sm object-contain bg-stone-900"
+                  />
                 ))}
               </div>
             </div>
@@ -99,7 +107,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-12 pt-6 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-600">
           <p>© {new Date().getFullYear()} PrintCraft. All rights reserved.</p>
-          <p>Designed & Developed in Bangladesh 🇧🇩</p>
+          <p>Designed & Developed by Kawsar</p>
         </div>
       </div>
     </footer>

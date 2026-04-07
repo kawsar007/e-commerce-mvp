@@ -55,8 +55,12 @@ body {
   }
   .btn-ghost:hover { color: #0e7490; }
 
-  .section-title {
+  /* .section-title {
     @apply font-display text-3xl md:text-4xl font-light tracking-wide text-stone-900;
+  } */
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-extrabold text-gray-900 text-center font-sans tracking-tight;
   }
 
   .product-card {

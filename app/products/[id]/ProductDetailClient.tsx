@@ -1,16 +1,22 @@
 'use client';
 
-import { useState } from 'react';
+import { ProductCard } from '@/components/product/ProductCard';
+import { products as allProducts, formatPrice, getProductImage } from '@/lib/mockData';
+import { useCartStore } from '@/store/cartStore';
+import type { Category, Product } from '@/types';
+import {
+  CheckCircle,
+  ChevronRight,
+  MessageCircle,
+  Minus,
+  Plus,
+  Ruler,
+  ShoppingCart, Zap,
+} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import {
-  ShoppingCart, Zap, MessageCircle, Plus, Minus, ChevronRight, Ruler, CheckCircle,
-} from 'lucide-react';
-import { useCartStore } from '@/store/cartStore';
-import { formatPrice, getProductImage, products as allProducts } from '@/lib/mockData';
-import { ProductCard } from '@/components/product/ProductCard';
-import type { Product, Category } from '@/types';
+import { useState } from 'react';
 
 interface Props {
   product: Product;
@@ -92,9 +98,8 @@ export function ProductDetailClient({ product, category }: Props) {
                 <button
                   key={idx}
                   onClick={() => setActiveImg(idx)}
-                  className={`relative shrink-0 w-16 h-16 bg-stone-100 overflow-hidden border-2 transition-colors ${
-                    activeImg === idx ? 'border-brand-500' : 'border-transparent hover:border-stone-300'
-                  }`}
+                  className={`relative shrink-0 w-16 h-16 bg-stone-100 overflow-hidden border-2 transition-colors ${activeImg === idx ? 'border-brand-500' : 'border-transparent hover:border-stone-300'
+                    }`}
                   aria-label={`View image ${idx + 1}`}
                 >
                   <Image
@@ -129,9 +134,14 @@ export function ProductDetailClient({ product, category }: Props) {
 
           {/* Price */}
           <div className="py-4 border-y border-stone-200">
-            <span className="font-display text-4xl font-semibold text-brand-600">
+            {/* <span className="font-display text-4xl font-semibold text-brand-600">
+              {formatPrice(product.price)}
+            </span> */}
+
+            <span className="text-brand-600 text-center font-semibold text-xl mb-3">
               {formatPrice(product.price)}
             </span>
+
             <p className="text-xs text-stone-400 mt-1">Inclusive of all taxes · Made to order</p>
           </div>
 
