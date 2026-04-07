@@ -1,0 +1,211 @@
+{
+  "categories": [
+    { "id": "cat_1", "name": "Home Decor", "slug": "home-decor", "image": "/images/categories/home-decor.jpg" },
+    { "id": "cat_2", "name": "Planters & Pots", "slug": "planters-pots", "image": "/images/categories/planters.jpg" },
+    { "id": "cat_3", "name": "Lamps & Lighting", "slug": "lamps-lighting", "image": "/images/categories/lamps.jpg" },
+    { "id": "cat_4", "name": "Desk Accessories", "slug": "desk-accessories", "image": "/images/categories/desk.jpg" },
+    { "id": "cat_5", "name": "Figures & Models", "slug": "figures-models", "image": "/images/categories/figures.jpg" }
+  ],
+  "products": [
+    {
+      "id": "prod_1", "name": "Abstract Wall Art", "slug": "abstract-wall-art", "price": 800, "categoryId": "cat_1",
+      "images": ["/images/products/abstract-wall-art-1.jpg", "/images/products/abstract-wall-art-2.jpg"],
+      "dimensions": { "width": 128, "depth": 50, "height": 127, "unit": "mm" },
+      "shortDescription": "Modern abstract wall decoration.",
+      "description": "A stylish 3D printed abstract wall art piece designed to enhance modern interiors. Lightweight and durable, this piece brings character and dimension to any blank wall. Printed with premium PLA filament for clean lines and lasting quality.",
+      "isFeatured": true, "createdAt": "2026-04-01T10:00:00Z"
+    },
+    {
+      "id": "prod_2", "name": "Minimalist Vase", "slug": "minimalist-vase", "price": 500, "categoryId": "cat_1",
+      "images": ["/images/products/minimalist-vase-1.jpg", "/images/products/minimalist-vase-2.jpg"],
+      "dimensions": { "width": 90, "depth": 90, "height": 150, "unit": "mm" },
+      "shortDescription": "Simple and elegant vase.",
+      "description": "A minimalist vase perfect for fresh or dried flowers. The clean geometric design fits seamlessly into modern interiors, adding a subtle touch of elegance without visual clutter.",
+      "isFeatured": false, "createdAt": "2026-04-02T10:00:00Z"
+    },
+    {
+      "id": "prod_3", "name": "Decorative Sculpture", "slug": "decorative-sculpture", "price": 1200, "categoryId": "cat_1",
+      "images": ["/images/products/decorative-sculpture-1.jpg", "/images/products/decorative-sculpture-2.jpg"],
+      "dimensions": { "width": 128, "depth": 50, "height": 127, "unit": "mm" },
+      "shortDescription": "Elegant decorative sculpture.",
+      "description": "Premium 3D printed sculpture with modern design and smooth finish. A conversation piece for shelves, desks, or living rooms. Carefully post-processed for a refined surface texture.",
+      "isFeatured": true, "createdAt": "2026-04-03T10:00:00Z"
+    },
+    {
+      "id": "prod_4", "name": "Modern Wall Clock", "slug": "modern-wall-clock", "price": 900, "categoryId": "cat_1",
+      "images": ["/images/products/wall-clock-1.jpg", "/images/products/wall-clock-2.jpg"],
+      "dimensions": { "width": 200, "depth": 40, "height": 200, "unit": "mm" },
+      "shortDescription": "Contemporary wall clock.",
+      "description": "A modern wall clock combining functionality and stylish design. Printed shell with precision clock movement included. Fits any contemporary or Scandinavian-inspired interior.",
+      "isFeatured": false, "createdAt": "2026-04-04T10:00:00Z"
+    },
+    {
+      "id": "prod_5", "name": "Art Frame Set", "slug": "art-frame-set", "price": 1500, "categoryId": "cat_1",
+      "images": ["/images/products/art-frame-1.jpg", "/images/products/art-frame-2.jpg"],
+      "dimensions": { "width": 220, "depth": 20, "height": 300, "unit": "mm" },
+      "shortDescription": "Decorative frame set.",
+      "description": "A stylish set of frames perfect for photos or artwork display. Set of 3 matching frames in varying sizes to create a gallery wall effect.",
+      "isFeatured": true, "createdAt": "2026-04-05T10:00:00Z"
+    },
+    {
+      "id": "prod_6", "name": "Geometric Planter", "slug": "geometric-planter", "price": 600, "categoryId": "cat_2",
+      "images": ["/images/products/geometric-planter-1.jpg", "/images/products/geometric-planter-2.jpg"],
+      "dimensions": { "width": 110, "depth": 110, "height": 100, "unit": "mm" },
+      "shortDescription": "Modern geometric plant pot.",
+      "description": "A trendy geometric planter ideal for indoor plants. The angular faceted design creates beautiful shadow play with natural light. Drainage hole included.",
+      "isFeatured": true, "createdAt": "2026-04-01T10:00:00Z"
+    },
+    {
+      "id": "prod_7", "name": "Hanging Pot", "slug": "hanging-pot", "price": 700, "categoryId": "cat_2",
+      "images": ["/images/products/hanging-pot-1.jpg", "/images/products/hanging-pot-2.jpg"],
+      "dimensions": { "width": 120, "depth": 120, "height": 120, "unit": "mm" },
+      "shortDescription": "Stylish hanging pot.",
+      "description": "Perfect hanging planter for home and balcony decoration. Comes with integrated hooks and cord for easy hanging. Ideal for trailing plants like pothos or string of pearls.",
+      "isFeatured": false, "createdAt": "2026-04-02T10:00:00Z"
+    },
+    {
+      "id": "prod_8", "name": "Mini Desk Planter", "slug": "mini-desk-planter", "price": 300, "categoryId": "cat_2",
+      "images": ["/images/products/mini-desk-planter-1.jpg", "/images/products/mini-desk-planter-2.jpg"],
+      "dimensions": { "width": 80, "depth": 80, "height": 70, "unit": "mm" },
+      "shortDescription": "Compact desk planter.",
+      "description": "Small planter ideal for desks and small plants. Perfect for succulents, air plants, or small cacti. Keeps your workspace green and vibrant.",
+      "isFeatured": false, "createdAt": "2026-04-03T10:00:00Z"
+    },
+    {
+      "id": "prod_9", "name": "Modern Pot Set", "slug": "modern-pot-set", "price": 1000, "categoryId": "cat_2",
+      "images": ["/images/products/modern-pot-set-1.jpg", "/images/products/modern-pot-set-2.jpg"],
+      "dimensions": { "width": 150, "depth": 150, "height": 130, "unit": "mm" },
+      "shortDescription": "Set of modern pots.",
+      "description": "A set of 3 beautifully designed pots for indoor decoration. Graduated sizes allow for grouping as a decorative cluster. Unified design language ties the set together perfectly.",
+      "isFeatured": true, "createdAt": "2026-04-04T10:00:00Z"
+    },
+    {
+      "id": "prod_10", "name": "Succulent Planter", "slug": "succulent-planter", "price": 400, "categoryId": "cat_2",
+      "images": ["/images/products/succulent-planter-1.jpg", "/images/products/succulent-planter-2.jpg"],
+      "dimensions": { "width": 100, "depth": 100, "height": 80, "unit": "mm" },
+      "shortDescription": "Perfect for succulents.",
+      "description": "Designed specifically for small succulent plants with a modern, low-profile look. Multiple drainage slots keep root health optimal.",
+      "isFeatured": false, "createdAt": "2026-04-05T10:00:00Z"
+    },
+    {
+      "id": "prod_11", "name": "Moon Lamp", "slug": "moon-lamp", "price": 1200, "categoryId": "cat_3",
+      "images": ["/images/products/moon-lamp-1.jpg", "/images/products/moon-lamp-2.jpg"],
+      "dimensions": { "width": 140, "depth": 140, "height": 140, "unit": "mm" },
+      "shortDescription": "Realistic moon lamp.",
+      "description": "A beautiful moon lamp with soft LED light for relaxing ambiance. Surface texture is mapped from real NASA lunar photographs. USB rechargeable, with warm and cool light modes.",
+      "isFeatured": true, "createdAt": "2026-04-01T10:00:00Z"
+    },
+    {
+      "id": "prod_12", "name": "Spiral Lamp", "slug": "spiral-lamp", "price": 1500, "categoryId": "cat_3",
+      "images": ["/images/products/spiral-lamp-1.jpg", "/images/products/spiral-lamp-2.jpg"],
+      "dimensions": { "width": 100, "depth": 100, "height": 250, "unit": "mm" },
+      "shortDescription": "Modern spiral lamp.",
+      "description": "A stylish spiral lamp that doubles as modern home decor. The helical structure creates mesmerizing light patterns on nearby surfaces. Fitted with E14 bulb socket.",
+      "isFeatured": true, "createdAt": "2026-04-02T10:00:00Z"
+    },
+    {
+      "id": "prod_13", "name": "LED Table Lamp", "slug": "led-table-lamp", "price": 800, "categoryId": "cat_3",
+      "images": ["/images/products/led-table-lamp-1.jpg", "/images/products/led-table-lamp-2.jpg"],
+      "dimensions": { "width": 120, "depth": 120, "height": 200, "unit": "mm" },
+      "shortDescription": "Energy-efficient lamp.",
+      "description": "Perfect LED lamp for study and work desks. Provides focused, eye-friendly light. Touch-sensitive base for on/off control. USB-C powered.",
+      "isFeatured": false, "createdAt": "2026-04-03T10:00:00Z"
+    },
+    {
+      "id": "prod_14", "name": "Night Light Cube", "slug": "night-light-cube", "price": 600, "categoryId": "cat_3",
+      "images": ["/images/products/night-light-cube-1.jpg", "/images/products/night-light-cube-2.jpg"],
+      "dimensions": { "width": 90, "depth": 90, "height": 90, "unit": "mm" },
+      "shortDescription": "Soft glowing cube light.",
+      "description": "A cube night light with soft warm glow perfect for bedrooms and nurseries. The geometric form catches light beautifully. Battery-operated with auto-off timer.",
+      "isFeatured": false, "createdAt": "2026-04-04T10:00:00Z"
+    },
+    {
+      "id": "prod_15", "name": "Galaxy Lamp", "slug": "galaxy-lamp", "price": 1800, "categoryId": "cat_3",
+      "images": ["/images/products/galaxy-lamp-1.jpg", "/images/products/galaxy-lamp-2.jpg"],
+      "dimensions": { "width": 150, "depth": 150, "height": 180, "unit": "mm" },
+      "shortDescription": "Galaxy projection lamp.",
+      "description": "Projects beautiful galaxy patterns across your ceiling and walls for stunning ambiance lighting. Multiple color modes and rotation speed. Perfect for bedrooms and home cinema spaces.",
+      "isFeatured": true, "createdAt": "2026-04-05T10:00:00Z"
+    },
+    {
+      "id": "prod_16", "name": "Pen Holder", "slug": "pen-holder", "price": 300, "categoryId": "cat_4",
+      "images": ["/images/products/pen-holder-1.jpg", "/images/products/pen-holder-2.jpg"],
+      "dimensions": { "width": 80, "depth": 80, "height": 100, "unit": "mm" },
+      "shortDescription": "Simple pen holder.",
+      "description": "Keep your desk organized with this minimalist pen holder. Holds 10–15 pens or pencils. Weighted base prevents tipping. Smooth matte finish.",
+      "isFeatured": false, "createdAt": "2026-04-01T10:00:00Z"
+    },
+    {
+      "id": "prod_17", "name": "Cable Organizer", "slug": "cable-organizer", "price": 250, "categoryId": "cat_4",
+      "images": ["/images/products/cable-organizer-1.jpg", "/images/products/cable-organizer-2.jpg"],
+      "dimensions": { "width": 100, "depth": 50, "height": 30, "unit": "mm" },
+      "shortDescription": "Manage cables easily.",
+      "description": "A compact cable organizer to eliminate desk clutter. Adhesive base attaches to any surface. Routes up to 5 cables neatly. Clean, discreet design.",
+      "isFeatured": true, "createdAt": "2026-04-02T10:00:00Z"
+    },
+    {
+      "id": "prod_18", "name": "Laptop Stand", "slug": "laptop-stand", "price": 1500, "categoryId": "cat_4",
+      "images": ["/images/products/laptop-stand-1.jpg", "/images/products/laptop-stand-2.jpg"],
+      "dimensions": { "width": 250, "depth": 200, "height": 150, "unit": "mm" },
+      "shortDescription": "Ergonomic laptop stand.",
+      "description": "Improves posture and airflow for laptop usage. Elevates screen to eye level to reduce neck strain. Compatible with 13–17 inch laptops. Non-slip rubber pads included.",
+      "isFeatured": true, "createdAt": "2026-04-03T10:00:00Z"
+    },
+    {
+      "id": "prod_19", "name": "Phone Stand", "slug": "phone-stand", "price": 400, "categoryId": "cat_4",
+      "images": ["/images/products/phone-stand-1.jpg", "/images/products/phone-stand-2.jpg"],
+      "dimensions": { "width": 90, "depth": 70, "height": 120, "unit": "mm" },
+      "shortDescription": "Convenient phone stand.",
+      "description": "Perfect for watching videos or video calls. Adjustable angle. Compatible with all phone sizes. Compact and portable for travel.",
+      "isFeatured": false, "createdAt": "2026-04-04T10:00:00Z"
+    },
+    {
+      "id": "prod_20", "name": "Desk Organizer Box", "slug": "desk-organizer-box", "price": 800, "categoryId": "cat_4",
+      "images": ["/images/products/desk-organizer-box-1.jpg", "/images/products/desk-organizer-box-2.jpg"],
+      "dimensions": { "width": 200, "depth": 120, "height": 100, "unit": "mm" },
+      "shortDescription": "Organize your desk.",
+      "description": "Multi-compartment organizer for all office essentials. Divided into 6 sections of varying sizes. Keeps pens, clips, sticky notes, and cards within easy reach.",
+      "isFeatured": true, "createdAt": "2026-04-05T10:00:00Z"
+    },
+    {
+      "id": "prod_21", "name": "Anime Figure – Naruto", "slug": "anime-figure-naruto", "price": 2000, "categoryId": "cat_5",
+      "images": ["/images/products/anime-figure-naruto-1.jpg", "/images/products/anime-figure-naruto-2.jpg"],
+      "dimensions": { "width": 100, "depth": 100, "height": 180, "unit": "mm" },
+      "shortDescription": "Naruto collectible figure.",
+      "description": "Highly detailed Naruto figure for anime lovers and collectors. Printed at 0.1mm layer height for exceptional surface quality. Painted by hand with professional acrylics.",
+      "isFeatured": true, "createdAt": "2026-04-01T10:00:00Z"
+    },
+    {
+      "id": "prod_22", "name": "Dragon Model", "slug": "dragon-model", "price": 2500, "categoryId": "cat_5",
+      "images": ["/images/products/dragon-model-1.jpg", "/images/products/dragon-model-2.jpg"],
+      "dimensions": { "width": 200, "depth": 150, "height": 180, "unit": "mm" },
+      "shortDescription": "Fantasy dragon model.",
+      "description": "A highly detailed dragon model for fantasy collectors. Intricate scale texture printed with precision resin technology. Display base included.",
+      "isFeatured": true, "createdAt": "2026-04-02T10:00:00Z"
+    },
+    {
+      "id": "prod_23", "name": "Superhero Statue", "slug": "superhero-statue", "price": 1800, "categoryId": "cat_5",
+      "images": ["/images/products/superhero-statue-1.jpg", "/images/products/superhero-statue-2.jpg"],
+      "dimensions": { "width": 120, "depth": 120, "height": 200, "unit": "mm" },
+      "shortDescription": "Superhero collectible statue.",
+      "description": "High-quality superhero statue with fine detailing. Dynamic posed action figure. Perfect display piece for desks or shelves. Individually numbered edition.",
+      "isFeatured": false, "createdAt": "2026-04-03T10:00:00Z"
+    },
+    {
+      "id": "prod_24", "name": "Mini Character Set", "slug": "mini-character-set", "price": 900, "categoryId": "cat_5",
+      "images": ["/images/products/mini-character-set-1.jpg", "/images/products/mini-character-set-2.jpg"],
+      "dimensions": { "width": 150, "depth": 100, "height": 80, "unit": "mm" },
+      "shortDescription": "Mini character collection.",
+      "description": "Set of 5 mini figures ideal for display. Each character is unique with individual paint detailing. Great for gifting or starting your collection.",
+      "isFeatured": false, "createdAt": "2026-04-04T10:00:00Z"
+    },
+    {
+      "id": "prod_25", "name": "Game Character Figure", "slug": "game-character-figure", "price": 2200, "categoryId": "cat_5",
+      "images": ["/images/products/game-character-figure-1.jpg", "/images/products/game-character-figure-2.jpg"],
+      "dimensions": { "width": 130, "depth": 120, "height": 190, "unit": "mm" },
+      "shortDescription": "Game-inspired figure.",
+      "description": "Detailed figure inspired by popular video game characters. Exceptional accuracy to in-game models. Weighted base for stability. Collectors box packaging included.",
+      "isFeatured": true, "createdAt": "2026-04-05T10:00:00Z"
+    }
+  ]
+}

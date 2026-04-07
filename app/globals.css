@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --color-cream: #fdf8f2;
+  --color-warm: #f5ede0;
+  --color-terracotta: #c4611f;
+  --color-bark: #6b2f1b;
+  --color-charcoal: #1c1917;
+  --color-stone: #78716c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f5f5f4; }
+::-webkit-scrollbar-thumb { background: #a8a29e; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #78716c; }
+
+/* Hide scrollbar for horizontal scroll containers */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Embla carousel */
+.embla { overflow: hidden; }
+.embla__container { display: flex; }
+.embla__slide { flex: 0 0 100%; min-width: 0; }
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-600 text-white text-sm font-medium tracking-wide rounded-none transition-all duration-200 hover:bg-brand-700 active:scale-95 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border border-stone-800 text-stone-800 text-sm font-medium tracking-wide rounded-none transition-all duration-200 hover:bg-stone-800 hover:text-white active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-stone-600 text-sm font-medium transition-colors hover:text-brand-600;
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-4xl font-light tracking-wide text-stone-900;
+  }
+
+  .product-card {
+    @apply relative bg-white overflow-hidden transition-shadow duration-300 hover:shadow-lg;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 border border-stone-200 bg-white text-stone-900 text-sm placeholder:text-stone-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors rounded-none;
+  }
+
+  .label {
+    @apply block text-xs font-medium tracking-widest uppercase text-stone-500 mb-1.5;
+  }
+}

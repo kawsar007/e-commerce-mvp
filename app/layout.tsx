@@ -1,0 +1,33 @@
+import type { Metadata } from 'next';
+import './globals.css';
+import { Navbar } from '@/components/layout/Navbar';
+import { SecondaryNav } from '@/components/layout/SecondaryNav';
+import { Footer } from '@/components/layout/Footer';
+
+export const metadata: Metadata = {
+  title: {
+    default: 'PrintCraft – Premium 3D Printed Decor',
+    template: '%s | PrintCraft',
+  },
+  description:
+    'Discover unique, handcrafted 3D printed home decor, planters, lamps, desk accessories, and collectible figures. Modern design, made to order.',
+  keywords: ['3D printing', 'home decor', 'planters', 'lamps', 'figures', 'Bangladesh'],
+  openGraph: {
+    type: 'website',
+    title: 'PrintCraft – Premium 3D Printed Decor',
+    description: 'Unique 3D printed home decor and collectibles, handcrafted in Bangladesh.',
+  },
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <Navbar />
+        <SecondaryNav />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
