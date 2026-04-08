@@ -47,11 +47,11 @@ export function Navbar() {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search products..."
               aria-label="Search products"
-              className="flex-1 border border-gray-300 border-r-0 px-4 py-2.5 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:border-[#0e7490]"
+              className="flex-1 border-2 border-gray-300 rounded-l-lg border-r-0 px-4 py-2.5 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:border-[#0e7490]"
             />
             <button
               type="submit"
-              className="flex items-center gap-2 px-5 py-2.5 text-white text-sm font-semibold shrink-0"
+              className="rounded-r-lg flex items-center gap-2 px-5 py-2.5 text-white text-sm font-semibold shrink-0"
               style={{ backgroundColor: '#0e7490' }}
               aria-label="Search"
             >
@@ -64,9 +64,11 @@ export function Navbar() {
           <div className="flex items-center gap-4 shrink-0">
             {/* Login / Register — desktop */}
             <div className="hidden md:flex items-center gap-1">
-              <User className="w-5 h-5 text-gray-500" />
+              <span className="mr-2 border rounded-full p-2 bg-gray-100">
+                <User className="w-5 h-5 text-gray-500" />
+              </span>
               <div className="flex flex-col leading-none">
-                <span className="text-[10px] text-gray-400">Hello, Sign In</span>
+                <span className="text-[12px] text-gray-400">Hello, Sign In</span>
                 <Link
                   href="#"
                   className="text-sm font-semibold text-gray-800 hover:text-[#0e7490] transition-colors"
