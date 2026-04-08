@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { formatPrice, getProductImage } from '@/lib/mockData';
+import { useCartStore } from '@/store/cartStore';
+import { ArrowRight, Minus, Plus, ShoppingBag, Tag, Trash2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Minus, Plus, Trash2, Tag, ArrowRight, ShoppingBag } from 'lucide-react';
-import { useCartStore } from '@/store/cartStore';
-import { formatPrice, getProductImage } from '@/lib/mockData';
+import { useState } from 'react';
 
 const VALID_COUPONS: Record<string, number> = {
   PRINT10: 10,
@@ -118,7 +118,7 @@ export default function CartPage() {
 
                   {/* Price */}
                   <div className="text-right">
-                    <p className="font-display text-lg font-semibold text-brand-600">
+                    <p className="text-sm font-semibold text-stone-800 shrink-0">
                       {formatPrice(product.price * quantity)}
                     </p>
                     {quantity > 1 && (
@@ -190,7 +190,7 @@ export default function CartPage() {
 
             <div className="border-t border-stone-200 pt-3 flex justify-between items-center">
               <span className="font-semibold text-stone-800">Total</span>
-              <span className="font-display text-2xl font-semibold text-brand-600">{formatPrice(total)}</span>
+              <span className="text-xl font-semibold text-brand-600">{formatPrice(total)}</span>
             </div>
 
             <button

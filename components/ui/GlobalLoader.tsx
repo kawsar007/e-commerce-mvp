@@ -50,7 +50,7 @@ export default function GlobalLoader() {
         <div className="relative flex items-center justify-center">
           <div className="w-16 h-16 border-4 border-gray-200 rounded-full"></div>
           <div
-            className="absolute w-16 h-16 border-4 border-transparent border-t-[#25d366] rounded-full animate-spin"
+            className="absolute w-16 h-16 border-4 border-transparent border-t-[#0e7490] rounded-full animate-spin"
           ></div>
         </div>
 

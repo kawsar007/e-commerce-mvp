@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { formatPrice, getProductImage } from '@/lib/mockData';
+import { useCartStore } from '@/store/cartStore';
+import type { CheckoutForm } from '@/types';
+import { ArrowLeft, CheckCircle, Package, Truck } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CheckCircle, Package, ArrowLeft, Truck } from 'lucide-react';
-import { useCartStore } from '@/store/cartStore';
-import { formatPrice, getProductImage } from '@/lib/mockData';
-import type { CheckoutForm } from '@/types';
+import { useState } from 'react';
 
 const emptyForm: CheckoutForm = {
   firstName: '',
@@ -236,7 +236,7 @@ export default function CheckoutPage() {
               </div>
               <div className="flex justify-between font-semibold text-stone-900 pt-2 border-t border-stone-200 text-base">
                 <span>Total</span>
-                <span className="font-display text-xl text-brand-600">{formatPrice(total)}</span>
+                <span className="text-sm font-semibold text-stone-800 shrink-0">{formatPrice(total)}</span>
               </div>
             </div>
           </div>

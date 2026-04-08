@@ -126,7 +126,11 @@ export function ProductDetailClient({ product, category }: Props) {
             </Link>
           )}
 
-          <h1 className="font-display text-3xl md:text-4xl font-light text-stone-900 leading-tight">
+          {/* <h1 className="font-display text-3xl md:text-4xl font-light text-stone-900 leading-tight">
+            {product.name}
+          </h1> */}
+
+          <h1 className="font-['Bebas_Neue'] font-sans text-3xl md:text-4xl font-light text-stone-900 leading-tight leading-[1.2em] tracking-[0.7px]">
             {product.name}
           </h1>
 
@@ -157,7 +161,7 @@ export function ProductDetailClient({ product, category }: Props) {
                 { label: 'Depth', value: product.dimensions.depth },
               ].map(({ label, value }) => (
                 <div key={label} className="bg-white p-2 border border-stone-200">
-                  <p className="font-display text-lg font-semibold text-stone-800">{value}</p>
+                  <p className="text-lg font-semibold text-stone-600">{value}</p>
                   <p className="text-xs text-stone-400">{label} ({product.dimensions.unit})</p>
                 </div>
               ))}
