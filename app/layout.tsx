@@ -1,6 +1,7 @@
 import { Footer } from '@/components/layout/Footer';
 import { Navbar } from '@/components/layout/Navbar';
 import { SecondaryNav } from '@/components/layout/SecondaryNav';
+import GlobalLoader from '@/components/ui/GlobalLoader';
 import { WhatsAppWidget } from '@/components/ui/WhatsAppWidget';
 import type { Metadata } from 'next';
 import './globals.css';
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Navbar />
         <SecondaryNav />
+        <GlobalLoader />
         <main className="min-h-screen">{children}</main>
         <Footer />
         <WhatsAppWidget />

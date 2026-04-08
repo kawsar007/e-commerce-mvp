@@ -132,7 +132,7 @@ export function WhatsAppWidget() {
       {/* ── Floating bubble (unchanged) ───────────────────────────── */}
       <button
         onClick={() => setOpen((o) => !o)}
-        className="fixed bottom-5 right-5 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-95"
+        className="fixed bottom-5 right-5 z-50 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-95"
         style={{ backgroundColor: '#25d366' }}
         aria-label={open ? 'Close WhatsApp chat' : 'Open WhatsApp chat'}
         aria-expanded={open}
@@ -152,3 +152,6 @@ export function WhatsAppWidget() {
     </>
   );
 }
+
+
+
