@@ -48,7 +48,7 @@ export function ProductDetailClient({ product, category }: Props) {
     const msg = encodeURIComponent(
       `Hi! I'd like to order:\n\n*${product.name}*\nQty: ${quantity}\nPrice: ${formatPrice(product.price)} each\nTotal: ${formatPrice(product.price * quantity)}\n\nPlease confirm availability.`
     );
-    window.open(`https://wa.me/8801700000000?text=${msg}`, '_blank');
+    window.open(`https://wa.me/8801751704061?text=${msg}`, '_blank');
   };
 
   // Related products (same category, exclude current)
@@ -126,10 +126,6 @@ export function ProductDetailClient({ product, category }: Props) {
             </Link>
           )}
 
-          {/* <h1 className="font-display text-3xl md:text-4xl font-light text-stone-900 leading-tight">
-            {product.name}
-          </h1> */}
-
           <h1 className="font-['Bebas_Neue'] font-sans text-3xl md:text-4xl font-light text-stone-900 leading-tight leading-[1.2em] tracking-[0.7px]">
             {product.name}
           </h1>
@@ -138,9 +134,6 @@ export function ProductDetailClient({ product, category }: Props) {
 
           {/* Price */}
           <div className="py-4 border-y border-stone-200">
-            {/* <span className="font-display text-4xl font-semibold text-brand-600">
-              {formatPrice(product.price)}
-            </span> */}
 
             <span className="text-brand-600 text-center font-semibold text-xl mb-3">
               {formatPrice(product.price)}
