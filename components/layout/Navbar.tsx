@@ -13,7 +13,7 @@ export function Navbar() {
   const [userDropOpen, setUserDropOpen] = useState(false);
 
   const [searchQuery, setSearchQuery] = useState('');
-  const dropRef = useState<HTMLDivElement | null>(null)[0];
+  const dropRef = useRef<HTMLDivElement>(null);
   const mobileRef = useRef<HTMLDivElement>(null);
   const totalItems = useCartStore((s) => s.getTotalItems());
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
