@@ -12,6 +12,7 @@ import {
   Lock,
   Mail,
   Package,
+  UserPlus,
 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -30,16 +31,12 @@ export function LoginPageClient() {
   const [success, setSuccess] = useState(false);
   const [showPw, setShowPw] = useState(false);
 
-  // Per-field onChange — clears its own error instantly
-  const handleChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { name, value, type, checked } = e.target;
-      setForm((f) => ({ ...f, [name]: type === 'checkbox' ? checked : value }));
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
-      setServerErr('');
-    },
-    []
-  );
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type, checked } = e.target;
+    setForm((f) => ({ ...f, [name]: type === 'checkbox' ? checked : value }));
+    setErrors((prev) => ({ ...prev, [name]: undefined }));
+    setServerErr('');
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,25 +52,24 @@ export function LoginPageClient() {
       setServerErr(result.error ?? 'Login failed. Please try again.');
       return;
     }
-
     setSuccess(true);
     setTimeout(() => router.push('/'), 1200);
   };
 
   return (
-    <div className="min-h-[calc(100vh-120px)] flex items-center justify-center px-4 py-12 bg-gray-50">
+    /* Full-viewport flex — centres card vertically on all screens */
+    <div className="min-h-[calc(100dvh-120px)] flex items-center justify-center bg-gray-50 px-4 py-8 sm:py-12">
       <div className="w-full max-w-md">
 
-        {/* Card */}
-        <div className="bg-white shadow-sm border border-gray-100 overflow-hidden">
-
-          {/* Top accent bar */}
+        {/* ── Card ─────────────────────────────────────────── */}
+        <div className="bg-white shadow-md border border-gray-100 overflow-hidden rounded-sm">
           <div className="h-1 w-full" style={{ backgroundColor: '#0e7490' }} />
 
-          <div className="px-8 py-8">
+          <div className="px-5 sm:px-8 py-7 sm:py-8">
+
             {/* Logo + heading */}
-            <div className="text-center mb-8">
-              <Link href="/" className="inline-flex items-center gap-2 mb-5">
+            <div className="text-center mb-6 sm:mb-8">
+              <Link href="/" className="inline-flex items-center gap-2 mb-4">
                 <Package className="w-7 h-7" style={{ color: '#0e7490' }} />
                 <span className="font-display text-2xl font-bold text-gray-800">
                   Print<span style={{ color: '#0e7490' }}>Craft</span>
@@ -85,20 +81,20 @@ export function LoginPageClient() {
 
             {/* Demo hint */}
             <div
-              className="flex items-start gap-2.5 p-3 mb-6 text-xs rounded"
+              className="flex items-start gap-2.5 p-3 mb-5 text-xs rounded"
               style={{ backgroundColor: '#f0fdfa', borderLeft: '3px solid #0e7490' }}
             >
               <CheckCircle className="w-4 h-4 shrink-0 mt-0.5" style={{ color: '#0e7490' }} />
-              <div className="text-gray-600">
-                <span className="font-semibold text-gray-800">Demo credentials: </span>
+              <div className="text-gray-600 break-all">
+                <span className="font-semibold text-gray-800">Demo: </span>
                 demo@printcraft.com / Demo@1234
               </div>
             </div>
 
             {/* Server error */}
             {serverErr && (
-              <div className="flex items-center gap-2 p-3 mb-5 bg-red-50 border border-red-200 rounded text-sm text-red-700">
-                <AlertCircle className="w-4 h-4 shrink-0" />
+              <div className="flex items-start gap-2 p-3 mb-5 bg-red-50 border border-red-200 rounded text-sm text-red-700">
+                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
                 <span>{serverErr}</span>
               </div>
             )}
@@ -111,34 +107,36 @@ export function LoginPageClient() {
               </div>
             )}
 
-            {/* Form */}
-            <form onSubmit={handleSubmit} noValidate className="space-y-5">
+            {/* ── Form ─────────────────────────────────────── */}
+            <form onSubmit={handleSubmit} noValidate className="space-y-4 sm:space-y-5">
 
               {/* Email */}
               <div>
-                <label htmlFor="email" className="label">Email Address</label>
+                <label htmlFor="login-email" className="label">Email Address</label>
                 <div className="relative">
                   <Mail
                     className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none"
                     style={{ color: errors.email ? '#ef4444' : '#9ca3af' }}
                   />
                   <input
-                    id="email"
+                    id="login-email"
                     name="email"
                     type="email"
+                    inputMode="email"
                     autoComplete="email"
+                    autoCapitalize="none"
                     value={form.email}
                     onChange={handleChange}
                     placeholder="you@example.com"
-                    className="input-field pl-10"
+                    className="input-field pl-10 text-base sm:text-sm"
                     style={errors.email ? { borderColor: '#ef4444', boxShadow: '0 0 0 1px #ef4444' } : {}}
                     aria-invalid={!!errors.email}
-                    aria-describedby={errors.email ? 'email-err' : undefined}
+                    aria-describedby={errors.email ? 'login-email-err' : undefined}
                   />
                 </div>
                 {errors.email && (
-                  <p id="email-err" className="mt-1.5 text-xs text-red-500 flex items-center gap-1">
-                    <AlertCircle className="w-3 h-3" /> {errors.email}
+                  <p id="login-email-err" role="alert" className="mt-1.5 text-xs text-red-500 flex items-center gap-1">
+                    <AlertCircle className="w-3 h-3 shrink-0" /> {errors.email}
                   </p>
                 )}
               </div>
@@ -146,7 +144,7 @@ export function LoginPageClient() {
               {/* Password */}
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <label htmlFor="password" className="label mb-0">Password</label>
+                  <label htmlFor="login-password" className="label mb-0">Password</label>
                   <Link
                     href="#"
                     className="text-xs font-medium hover:underline"
@@ -161,54 +159,54 @@ export function LoginPageClient() {
                     style={{ color: errors.password ? '#ef4444' : '#9ca3af' }}
                   />
                   <input
-                    id="password"
+                    id="login-password"
                     name="password"
                     type={showPw ? 'text' : 'password'}
                     autoComplete="current-password"
                     value={form.password}
                     onChange={handleChange}
                     placeholder="••••••••"
-                    className="input-field pl-10 pr-10"
+                    className="input-field pl-10 pr-11 text-base sm:text-sm"
                     style={errors.password ? { borderColor: '#ef4444', boxShadow: '0 0 0 1px #ef4444' } : {}}
                     aria-invalid={!!errors.password}
-                    aria-describedby={errors.password ? 'pw-err' : undefined}
+                    aria-describedby={errors.password ? 'login-pw-err' : undefined}
                   />
+                  {/* Show/hide toggle — large tap target for mobile */}
                   <button
                     type="button"
                     onClick={() => setShowPw((v) => !v)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                    className="absolute right-0 top-0 h-full w-11 flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors"
                     aria-label={showPw ? 'Hide password' : 'Show password'}
                   >
                     {showPw ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
                 </div>
                 {errors.password && (
-                  <p id="pw-err" className="mt-1.5 text-xs text-red-500 flex items-center gap-1">
-                    <AlertCircle className="w-3 h-3" /> {errors.password}
+                  <p id="login-pw-err" role="alert" className="mt-1.5 text-xs text-red-500 flex items-center gap-1">
+                    <AlertCircle className="w-3 h-3 shrink-0" /> {errors.password}
                   </p>
                 )}
               </div>
 
-              {/* Remember me */}
-              <div className="flex items-center gap-2">
+              {/* Remember me — large tap target */}
+              <label className="flex items-center gap-3 cursor-pointer select-none py-1">
                 <input
-                  id="rememberMe"
+                  id="login-rememberMe"
                   name="rememberMe"
                   type="checkbox"
                   checked={form.rememberMe}
                   onChange={handleChange}
-                  className="w-4 h-4 rounded border-gray-300 accent-[#0e7490]"
+                  className="w-4 h-4 rounded accent-[#0e7490] shrink-0"
                 />
-                <label htmlFor="rememberMe" className="text-sm text-gray-600 select-none cursor-pointer">
-                  Remember me for 30 days
-                </label>
-              </div>
+                <span className="text-sm text-gray-600">Remember me for 30 days</span>
+              </label>
 
               {/* Submit */}
               <button
                 type="submit"
                 disabled={loading || success}
-                className="btn-primary w-full py-3.5 text-sm gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="btn-primary w-full py-3.5 text-sm gap-2 disabled:opacity-70 disabled:cursor-not-allowed mt-1"
+                style={{ minHeight: '48px' }}
               >
                 {loading ? (
                   <><Loader2 className="w-4 h-4 animate-spin" /> Signing in…</>
@@ -226,22 +224,24 @@ export function LoginPageClient() {
                 <div className="w-full border-t border-gray-100" />
               </div>
               <div className="relative flex justify-center">
-                <span className="bg-white px-3 text-xs text-gray-400">Don't have an account?</span>
+                <span className="bg-white px-3 text-xs text-gray-400">New to PrintCraft?</span>
               </div>
             </div>
 
-            {/* Register link */}
+            {/* Register CTA */}
             <Link
               href="/auth/register"
-              className="btn-secondary w-full py-3 text-sm justify-center"
+              className="flex items-center justify-center gap-2 w-full py-3.5 border-2 text-sm font-semibold transition-colors rounded-sm"
+              style={{ borderColor: '#0e7490', color: '#0e7490', minHeight: '48px' }}
             >
-              Create New Account
+              <UserPlus className="w-4 h-4" />
+              Create a Free Account
             </Link>
           </div>
         </div>
 
         {/* Footer note */}
-        <p className="text-center text-xs text-gray-400 mt-5">
+        <p className="text-center text-xs text-gray-400 mt-5 px-2">
           By signing in you agree to our{' '}
           <Link href="#" className="underline hover:text-gray-600">Terms</Link> and{' '}
           <Link href="#" className="underline hover:text-gray-600">Privacy Policy</Link>.

@@ -5,7 +5,7 @@ import { useCartStore } from '@/store/cartStore';
 import { ChevronDown, LogOut, Menu, Package, Search, ShoppingCart, User, UserCircle, X } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export function Navbar() {
   const router = useRouter();
@@ -14,6 +14,7 @@ export function Navbar() {
 
   const [searchQuery, setSearchQuery] = useState('');
   const dropRef = useState<HTMLDivElement | null>(null)[0];
+  const mobileRef = useRef<HTMLDivElement>(null);
   const totalItems = useCartStore((s) => s.getTotalItems());
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
   const user = useAuthStore((s) => s.user);
@@ -196,36 +197,161 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile: search + links */}
+        {/* ════════════════════════════════════════════════════
+          MOBILE SLIDE-DOWN MENU
+          Full-screen overlay with search, nav links, auth
+          ════════════════════════════════════════════════════ */}
+        {/* Backdrop */}
         {menuOpen && (
-          <div className="md:hidden border-t border-gray-100 py-4 space-y-4">
-            <form onSubmit={handleSearch} className="flex" role="search">
+          <div
+            className="fixed inset-0 top-16 bg-black/40 z-30 md:hidden"
+            onClick={() => setMenuOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+
+        {/* Panel */}
+        <div
+          ref={mobileRef}
+          className="md:hidden fixed left-0 right-0 top-16 z-40 bg-white border-t border-gray-100 shadow-xl transition-all duration-300 ease-in-out overflow-y-auto"
+          style={{
+            maxHeight: menuOpen ? 'calc(100vh - 64px)' : '0',
+            overflow: menuOpen ? 'auto' : 'hidden',
+          }}
+          aria-hidden={!menuOpen}
+        >
+          <div className="px-4 py-5 space-y-5">
+
+            {/* Search */}
+            <form onSubmit={(e) => { handleSearch(e); setMenuOpen(false); }} className="flex" role="search">
               <input
                 type="search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search products..."
                 aria-label="Search products"
-                className="flex-1 border border-gray-300 border-r-0 px-4 py-2.5 text-sm focus:outline-none focus:border-[#0e7490]"
+                className="flex-1 border border-gray-300 border-r-0 px-4 py-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:border-[#0e7490]"
               />
               <button
                 type="submit"
-                className="px-4 py-2.5 text-white text-sm font-semibold"
+                className="px-4 py-3 text-white font-semibold"
                 style={{ backgroundColor: '#0e7490' }}
+                aria-label="Search"
               >
                 <Search className="w-4 h-4" />
               </button>
             </form>
-            <div className="flex gap-3">
-              <Link href="#" className="flex-1 flex items-center justify-center gap-2 py-2.5 border border-gray-300 text-sm text-gray-700 font-medium hover:border-[#0e7490] hover:text-[#0e7490] transition-colors">
-                <User className="w-4 h-4" /> Login
-              </Link>
-              <Link href="#" className="flex-1 flex items-center justify-center py-2.5 text-sm text-white font-semibold" style={{ backgroundColor: '#0e7490' }}>
-                Register
-              </Link>
-            </div>
+
+            {/* Nav links */}
+            {/* <nav aria-label="Mobile navigation">
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { label: 'Home', href: '/' },
+                  { label: 'Shop All', href: '/products' },
+                  { label: 'Home Decor', href: '/products?category=home-decor' },
+                  { label: 'Planters', href: '/products?category=planters-pots' },
+                  { label: 'Lamps', href: '/products?category=lamps-lighting' },
+                  { label: 'Figures', href: '/products?category=figures-models' },
+                ].map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center gap-2 px-4 py-3 bg-gray-50 text-sm font-medium text-gray-700 hover:bg-[#0e7490] hover:text-white transition-colors rounded"
+                  >
+                    <LayoutGrid className="w-3.5 h-3.5 opacity-60" />
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </nav> */}
+
+            <div className="border-t border-gray-100" />
+
+            {/* ── Auth section in mobile menu ──────────────── */}
+            {isAuthenticated && user ? (
+              /* Logged in */
+              <div className="space-y-3">
+                {/* User card */}
+                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100">
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center text-white text-base font-bold shrink-0"
+                    style={{ backgroundColor: '#0e7490' }}
+                  >
+                    {user.name.charAt(0).toUpperCase()}
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-gray-900 truncate">{user.name}</p>
+                    <p className="text-xs text-gray-400 truncate">{user.email}</p>
+                    {user.phone && <p className="text-xs text-gray-400">{user.phone}</p>}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <Link
+                    href="#"
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center justify-center gap-2 py-3 border border-gray-200 text-sm text-gray-700 font-medium hover:border-[#0e7490] hover:text-[#0e7490] transition-colors rounded"
+                  >
+                    <UserCircle className="w-4 h-4" /> My Profile
+                  </Link>
+                  <Link
+                    href="/cart"
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center justify-center gap-2 py-3 border border-gray-200 text-sm text-gray-700 font-medium hover:border-[#0e7490] hover:text-[#0e7490] transition-colors rounded"
+                  >
+                    <ShoppingCart className="w-4 h-4" /> My Orders
+                  </Link>
+                </div>
+
+                <button
+                  onClick={handleLogout}
+                  className="w-full flex items-center justify-center gap-2 py-3 border border-red-200 bg-red-50 text-sm font-semibold text-red-600 hover:bg-red-100 transition-colors rounded"
+                >
+                  <LogOut className="w-4 h-4" /> Sign Out
+                </button>
+              </div>
+            ) : (
+              /* Not logged in */
+              <div className="space-y-3">
+                <p className="text-xs font-semibold tracking-widest uppercase text-gray-400 text-center">
+                  Your Account
+                </p>
+                <div className="grid grid-cols-2 gap-3">
+                  <Link
+                    href="/auth/login"
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center justify-center gap-2 py-3.5 border-2 text-sm font-semibold transition-colors rounded"
+                    style={{ borderColor: '#0e7490', color: '#0e7490' }}
+                  >
+                    <User className="w-4 h-4" />
+                    Login
+                  </Link>
+                  <Link
+                    href="/auth/register"
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center justify-center gap-2 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 rounded"
+                    style={{ backgroundColor: '#0e7490' }}
+                  >
+                    <UserCircle className="w-4 h-4" />
+                    Register
+                  </Link>
+                </div>
+                <p className="text-xs text-center text-gray-400">
+                  New here?{' '}
+                  <Link
+                    href="/auth/register"
+                    onClick={() => setMenuOpen(false)}
+                    className="font-semibold underline"
+                    style={{ color: '#0e7490' }}
+                  >
+                    Create a free account
+                  </Link>
+                </p>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
     </header>
   );
