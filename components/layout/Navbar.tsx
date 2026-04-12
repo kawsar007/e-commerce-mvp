@@ -1,18 +1,32 @@
 'use client';
 
+import { useAuthStore } from '@/store/authStore';
 import { useCartStore } from '@/store/cartStore';
-import { Menu, Package, Search, ShoppingCart, User, X } from 'lucide-react';
+import { ChevronDown, LogOut, Menu, Package, Search, ShoppingCart, User, UserCircle, X } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export function Navbar() {
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [userDropOpen, setUserDropOpen] = useState(false);
+
   const [searchQuery, setSearchQuery] = useState('');
+  const dropRef = useState<HTMLDivElement | null>(null)[0];
   const totalItems = useCartStore((s) => s.getTotalItems());
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+  const user = useAuthStore((s) => s.user);
+  const logout = useAuthStore((s) => s.logout);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) console.log('Search:', searchQuery);
+  };
+
+  const handleLogout = () => {
+    logout();
+    router.push('/'); // Redirect to home after logout
   };
 
   useEffect(() => {
@@ -63,7 +77,7 @@ export function Navbar() {
           {/* Right: Login/Register + Cart */}
           <div className="flex items-center gap-4 shrink-0">
             {/* Login / Register — desktop */}
-            <div className="hidden md:flex items-center gap-1">
+            {/* <div className="hidden md:flex items-center gap-1">
               <span className="mr-2 border rounded-full p-2 bg-gray-100">
                 <User className="w-5 h-5 text-gray-500" />
               </span>
@@ -76,7 +90,82 @@ export function Navbar() {
                   Login / Register
                 </Link>
               </div>
-            </div>
+            </div> */}
+
+            {isAuthenticated && user ? (
+              /* Logged-in: user dropdown */
+              <div className="hidden md:block relative" ref={dropRef}>
+                <button
+                  onClick={() => setUserDropOpen((o) => !o)}
+                  className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:text-[#0e7490] transition-colors"
+                  aria-expanded={userDropOpen}
+                  aria-haspopup="true"
+                >
+                  <div
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
+                    style={{ backgroundColor: '#0e7490' }}
+                    aria-hidden="true"
+                  >
+                    {user.name.charAt(0).toUpperCase()}
+                  </div>
+                  <div className="flex flex-col leading-none text-left">
+                    <span className="text-[10px] text-gray-400">Hello,</span>
+                    <span className="text-sm font-semibold text-gray-800 max-w-[100px] truncate">
+                      {user.name.split(' ')[0]}
+                    </span>
+                  </div>
+                  <ChevronDown className={`w-3.5 h-3.5 text-gray-400 transition-transform ${userDropOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {/* Dropdown */}
+                {userDropOpen && (
+                  <div className="absolute right-0 top-full mt-1 w-52 bg-white border border-gray-200 shadow-lg py-1 z-50">
+                    {/* User info header */}
+                    <div className="px-4 py-3 border-b border-gray-100">
+                      <p className="text-sm font-semibold text-gray-800 truncate">{user.name}</p>
+                      <p className="text-xs text-gray-400 truncate mt-0.5">{user.email}</p>
+                    </div>
+                    <Link
+                      href="#"
+                      onClick={() => setUserDropOpen(false)}
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#0e7490] transition-colors"
+                    >
+                      <UserCircle className="w-4 h-4" /> My Profile
+                    </Link>
+                    <Link
+                      href="/cart"
+                      onClick={() => setUserDropOpen(false)}
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#0e7490] transition-colors"
+                    >
+                      <ShoppingCart className="w-4 h-4" /> My Orders
+                    </Link>
+                    <div className="border-t border-gray-100 mt-1 pt-1">
+                      <button
+                        onClick={handleLogout}
+                        className="flex items-center gap-2.5 w-full px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 transition-colors"
+                      >
+                        <LogOut className="w-4 h-4" /> Sign Out
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              /* Not logged in */
+              <div className="hidden md:flex items-center gap-1">
+                <User className="w-5 h-5 text-gray-500" />
+                <div className="flex flex-col leading-none">
+                  <span className="text-[10px] text-gray-400">Hello, Sign In</span>
+                  <Link
+                    href="/auth/login"
+                    className="text-sm font-semibold text-gray-800 hover:text-[#0e7490] transition-colors"
+                  >
+                    Login / Register
+                  </Link>
+                </div>
+              </div>
+            )}
+
 
             {/* Cart */}
             <Link

@@ -1,3 +1,43 @@
+// Authentication types
+export interface RegisterForm {
+  name: string;
+  email: string;
+  phone: string;
+  password: string;
+  confirmPassword: string;
+  address: string;
+  city: string;
+  district: string;
+  agreeToTerms: boolean;
+}
+
+export interface LoginForm {
+  email: string;
+  password: string;
+  rememberMe: boolean;
+}
+
+export type RegisterErrors = Partial<Record<keyof RegisterForm, string>>;
+export type LoginErrors = Partial<Record<keyof LoginForm, string>>;
+
+export interface AuthUser {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+  district: string;
+}
+
+export interface AuthState {
+  user: AuthUser | null;
+  isAuthenticated: boolean;
+  login: (email: string, password: string) => Promise<{ ok: boolean; error?: string }>;
+  register: (data: Omit<RegisterForm, 'confirmPassword' | 'agreeToTerms'>) => Promise<{ ok: boolean; error?: string }>;
+  logout: () => void;
+}
+
 // Product & Category types
 
 export interface Dimensions {
