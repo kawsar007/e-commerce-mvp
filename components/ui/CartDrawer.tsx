@@ -84,7 +84,7 @@ export function CartDrawer() {
               ? `Open cart — ${totalItems} items, ${formatPrice(totalPrice)}`
               : 'Open cart'
           }
-          className="fixed bottom-24 right-0 z-40 flex flex-col items-center justify-center text-white shadow-xl transition-all duration-200 hover:right-0.5 hover:shadow-2xl active:scale-95"
+          className="fixed bottom-96 right-0 z-40 flex flex-col items-center justify-center text-white shadow-xl transition-all duration-200 hover:right-0.5 hover:shadow-2xl active:scale-95"
           style={{
             backgroundColor: '#0e7490',
             borderRadius: '12px 0 0 12px',
