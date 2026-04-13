@@ -79,21 +79,6 @@ export function Navbar() {
 
           {/* Right: Login/Register + Cart */}
           <div className="flex items-center gap-4 shrink-0">
-            {/* Login / Register — desktop */}
-            {/* <div className="hidden md:flex items-center gap-1">
-              <span className="mr-2 border rounded-full p-2 bg-gray-100">
-                <User className="w-5 h-5 text-gray-500" />
-              </span>
-              <div className="flex flex-col leading-none">
-                <span className="text-[12px] text-gray-400">Hello, Sign In</span>
-                <Link
-                  href="#"
-                  className="text-sm font-semibold text-gray-800 hover:text-[#0e7490] transition-colors"
-                >
-                  Login / Register
-                </Link>
-              </div>
-            </div> */}
 
             {isAuthenticated && user ? (
               /* Logged-in: user dropdown */

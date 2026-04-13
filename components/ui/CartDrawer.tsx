@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * CartDrawer — v2
+ * CartDrawer
  * ───────────────
  * Matches the reference screenshots exactly:
  *
@@ -12,7 +12,6 @@
  *    product rows with thumbnail / name / price / qty controls / trash icon,
  *    sticky subtotal footer with "Proceed to Checkout" teal button.
  *
- * Zero impact on other components — all state lives in useCartStore.
  */
 
 import { formatPrice, getProductImage } from '@/lib/mockData';
