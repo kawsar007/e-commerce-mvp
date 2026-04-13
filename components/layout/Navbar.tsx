@@ -16,6 +16,8 @@ export function Navbar() {
   const dropRef = useRef<HTMLDivElement>(null);
   const mobileRef = useRef<HTMLDivElement>(null);
   const totalItems = useCartStore((s) => s.getTotalItems());
+  const hasHydrated = useCartStore((s) => s.hasHydrated);
+  const openDrawer = useCartStore((s) => s.openDrawer);
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
@@ -169,13 +171,19 @@ export function Navbar() {
 
 
             {/* Cart */}
-            <Link
-              href="/cart"
-              className="relative flex items-center justify-center w-10 h-10"
-              aria-label={`Cart with ${totalItems} items`}
+            <button
+              onClick={openDrawer}
+              // href="/cart"
+
+              className="relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10"
+              aria-label={
+                hasHydrated
+                  ? `Open cart — ${totalItems} item${totalItems !== 1 ? 's' : ''}`
+                  : 'Open cart'
+              }
             >
               <ShoppingCart className="w-6 h-6 text-gray-700 hover:text-[#0e7490] transition-colors" />
-              {totalItems > 0 && (
+              {hasHydrated && totalItems > 0 && (
                 <span
                   className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] flex items-center justify-center text-white text-[10px] font-bold rounded-full px-1"
                   style={{ backgroundColor: '#e11d48' }}
@@ -183,7 +191,8 @@ export function Navbar() {
                   {totalItems > 99 ? '99+' : totalItems}
                 </span>
               )}
-            </Link>
+            </button>
+
 
             {/* Mobile hamburger */}
             <button
