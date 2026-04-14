@@ -246,7 +246,7 @@ export function CartDrawer() {
                         </Link>
                         <button
                           onClick={() => removeItem(product.id)}
-                          className="shrink-0 w-7 h-7 flex items-center justify-center text-gray-300 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                          className="shrink-0 w-7 h-7 flex items-center justify-center text-red-500 hover:text-red-500 hover:bg-red-200 rounded-lg transition-colors"
                           aria-label={`Remove ${product.name}`}
                         >
                           <Trash2 className="w-3.5 h-3.5" />
