@@ -30,6 +30,12 @@ export function ProductDetailClient({ product, category }: Props) {
   const [activeImg, setActiveImg] = useState(0);
   const [added, setAdded] = useState(false);
 
+  // Zoom States
+  const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({ x: 50, y: 50 });
+
+  const [isHovering, setIsHovering] = useState(false);
+  const ZOOM_LEVEL = 2.5;
+
   // Use Unsplash images mapped by slug for demo
   const imgSrc = (idx: number) => getProductImage(product.images[idx] ?? product.images[0], product.slug);
 
@@ -79,13 +85,33 @@ export function ProductDetailClient({ product, category }: Props) {
         {/* Image Gallery */}
         <div className="space-y-4">
           {/* Main image */}
-          <div className="relative aspect-square bg-stone-100 overflow-hidden">
+          <div
+            className="relative aspect-square bg-stone-100 overflow-hidden cursor-zoom-in"
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => {
+              setIsHovering(false);
+              setMousePosition({ x: 50, y: 50 });
+            }}
+            onMouseMove={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              let x = ((e.clientX - rect.left) / rect.width) * 100;
+              let y = ((e.clientY - rect.top) / rect.height) * 100;
+              // Clamp values
+              x = Math.max(0, Math.min(100, x));
+              y = Math.max(0, Math.min(100, y));
+              setMousePosition({ x, y });
+            }}
+          >
             <Image
               src={imgSrc(activeImg)}
               alt={`${product.name} - image ${activeImg + 1}`}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
+              className="object-cover transition-transform duration-150 ease-out"
+              style={{
+                transform: `scale(${isHovering ? ZOOM_LEVEL : 1})`,
+                transformOrigin: `${mousePosition.x}% ${mousePosition.y}%`
+              }}
               priority
               unoptimized
             />
