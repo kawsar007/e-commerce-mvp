@@ -137,7 +137,7 @@ export function AdBanner() {
 
   // ── Countdown auto-close ─────────────────────────────────
   useEffect(() => {
-    if (!visible || AUTO_CLOSE_SEC === 0) return;
+    if (!visible) return;
     if (countdown <= 0) { handleClose(); return; }
     const t = setTimeout(() => setCountdown((c) => c - 1), 1000);
     return () => clearTimeout(t);
