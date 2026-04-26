@@ -11,7 +11,7 @@ function WhatsAppIcon({ className = '' }: { className?: string }) {
   );
 }
 
-const WHATSAPP_NUMBER = '8801751704061';
+const WHATSAPP_NUMBER = '8801638600627';
 const BUSINESS_NAME = 'PrintCraft';
 const REPLY_TIME = 'Typically replies within minutes';
 const INITIAL_MESSAGE = 'Have a question? please whatsapp us';

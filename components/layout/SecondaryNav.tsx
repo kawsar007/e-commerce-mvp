@@ -83,13 +83,13 @@ export function SecondaryNav() {
 
           {/* Phone — right side, red like reference */}
           <a
-            href="tel:+8801751704061"
+            href="tel:+8801638600627"
             className="hidden sm:flex items-center gap-1.5 text-sm font-semibold shrink-0 pl-4"
             style={{ color: '#e11d48' }}
             aria-label="Call us"
           >
             <Phone className="w-4 h-4" />
-            <span>+8801751704061</span>
+            <span>+8801638600627</span>
           </a>
         </div>
       </div>

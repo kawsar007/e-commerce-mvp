@@ -54,7 +54,7 @@ export function ProductDetailClient({ product, category }: Props) {
     const msg = encodeURIComponent(
       `Hi! I'd like to order:\n\n*${product.name}*\nQty: ${quantity}\nPrice: ${formatPrice(product.price)} each\nTotal: ${formatPrice(product.price * quantity)}\n\nPlease confirm availability.`
     );
-    window.open(`https://wa.me/8801751704061?text=${msg}`, '_blank');
+    window.open(`https://wa.me/8801638600627?text=${msg}`, '_blank');
   };
 
   // Related products (same category, exclude current)
